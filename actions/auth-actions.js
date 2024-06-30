@@ -2,6 +2,7 @@
 
 import { hashUserPassword } from "@/lib/hash";
 import { createUser } from "@/lib/user";
+import { redirect } from "next/navigation";
 
 export async function signup(prevState, formData) {
   const email = formData.get("email");
@@ -33,5 +34,7 @@ export async function signup(prevState, formData) {
         },
       };
     }
+    throw error;
   }
+  redirect("/training");
 }
